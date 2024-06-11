@@ -1,0 +1,155 @@
+{% set current_page = "home" %}
+{% extends "layouts/app.html" %}
+
+{% block title %} Rate My Teacher |  {{ teacher.name }} {% endblock %}
+
+{% block content %}
+
+
+<div class="container my-5 text-center">
+    
+    <div class="img-parent">
+
+        {% if teacher.image_link %}
+            <img src="{{ teacher.image_link }}" class="img-thumbnail" alt="Image Depicting Teacher">
+        {% else %}
+            <img src="https://www.pngkey.com/png/detail/21-213224_unknown-person-icon-png-download.png" class="img-thumbnail" alt="Default Placeholder Image">
+        {% endif %}
+
+    </div>
+
+
+    <h1 class="mt-2">{{ teacher.name }}</h1>
+
+    <p class="lead">
+        Working as a teacher at SMIC HSET for
+        <strong> {{ teacher.years_at_smic_hset }} years </strong>
+    </p>
+
+    <div class=" m-3">
+
+        <a href="/teachers/update/{{ teacher.id }}" class="btn btn-outline-info">Edit</a>
+
+        <a href="/teachers/delete/{{ teacher.id }}" 
+        class="btn btn-outline-danger"
+        data-bs-toggle="modal" 
+        data-bs-target="#deleteModal"
+        >Delete</a>
+    </div>
+
+    <div class="row justify-content-md-center bg-secondary text-white">
+        <div class="col-sm-11 col-md-9 col-lg-7 ">
+
+
+
+
+            <form class="mt-5" action="/teachers/{{teacher.id}}/new_review" method="post">
+                <div class="row justify-content-md-center">
+                    <label for="rating" class="form-label">On a Scale of 1-5 with 5 being best most: How would you rate your experience with this teacher?</label>
+                    <div class="col-sm-2 col-md-2">
+                        <span>4.5</span>
+                    </div>
+                    <div class="col-sm-10 col-md-6">
+                        <input type="range" class="form-range" min="0" max="5" step="0.5" id="rating" name="rating">
+                    </div>
+                </div>
+    
+                <div class="row justify-content-md-center">
+                    <div class="mb-3 col-sm-12 col-md-10">
+                        <label for="title" class="form-label">Title</label>
+                        <input class="form-control" id="title" name="title" required>
+                    </div>
+            
+                    <div class="mb-3 col-sm-12">
+                        <label for="body" class="form-label">Body</label>
+                        <textarea class="form-control" id="body" rows="5" name="body" required></textarea>
+                    </div>
+                </div>
+            
+                <div class="mb-3">
+                        <label for="amount-of-self-study" class="form-label">On a Scale of 1-5 with 5 being the most: How much self study is required in this teacher's course(s)?</label>
+                        <div class="row justify-content-md-center">
+                            <div class="col-sm-2 col-md-2">
+                                <span>4.5</span>
+                            </div>
+                            <div class="col-sm-10 col-md-6">
+                                <input type="range" class="form-range" min="0" max="5" step="0.5" id="amount-of-self-study" name="amount_of_self_study">
+                            </div>
+                        </div>
+                </div>
+                <div class="mb-3">
+                        <label for="amount-of-study-guide" class="form-label">On a Scale of 1-5 with 5 being super helpful: How helpful are this teacher's study guides? (0 if none provided)</label>
+                        <div class="row justify-content-md-center">
+                            <div class="col-sm-2 col-md-2">
+                                <span>4.5</span>
+                            </div>
+                            <div class="col-sm-10 col-md-6">
+                                <input type="range" class="form-range" min="0" max="5" step="0.5" id="amount-of-study-guide" name="amount_of_study_guide">
+                            </div>
+                        </div>
+                </div>
+                <div class="mb-3">
+                        <label for="late-work-strictness" class="form-label">On a Scale of 1-5 with 5 being the most strict: How strict is this teacher's late submission policy?</label>
+                        <div class="row justify-content-md-center">
+                            <div class="col-sm-2 col-md-2">
+                                <span>4.5</span>
+                            </div>
+                            <div class="col-sm-10 col-md-6">
+                                <input type="range" class="form-range" min="0" max="5" step="0.5" id="late-work-strictness" name="late_work_strictness">
+                            </div>
+                        </div>
+                </div>
+                <div class="mb-3">
+                        <label for="time-to-grade" class="form-label">On a Scale of 1-5 with 5 being the longest: How long does it take for this teacher to put out grades?</label>
+                        <div class="row justify-content-md-center">
+                            <div class="col-sm-2 col-md-2">
+                                <span>4.5</span>
+                            </div>
+                            <div class="col-sm-10 col-md-6">
+                                <input type="range" class="form-range" min="0" max="5" step="0.5" id="time-to-grade" name="time_to_grade">
+                            </div>
+                        </div>
+                </div>
+            
+                <div class="text-end my-4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+<div class="bg-dark text-white py-5">
+    <div class="container">
+        <p class="lead"> {{ teacher.name }} teaches: {{ teacher.subjects }} </p>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Remove Teacher</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure that you would like to remove <strong>{{ teacher.name }}</strong> as a reviewable teacher? This process cannot be reversed.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <form action="/teachers/delete/{{ teacher.id }}" method="get">
+            <button type="submit" class="btn btn-danger">Yes, remove {{ teacher.name }}</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+
+
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% set current_page = "teacher_update" %}
+{% extends "layouts/app.html" %}
+
+{% block title %} Rate My Teacher | Update Teacher Info {% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="row justify-content-md-center">
+    <div class="col-sm-11 col-md-9 col-lg-7">
+
+        <h1>Update Teacher Info</h1>
+
+        {% if msg == "Error" %}
+        <div class="alert alert-danger" role="alert">
+            <div>
+              {{ msg }}
+            </div>
+          </div>
+        {% elif msg == "Success" %}
+        <div class="alert alert-success" role="alert">
+            <div>
+                {{ msg }}
+            </div>
+        </div>
+
+        {% endif %}
+
+        <form class="mt-5" action="/teachers/update/{{teacher.id}}" method="post">
+            <div class="row">
+                <div class="mb-3 col-sm-11 col-md-6">
+                    <label for="name" class="form-label">Name</label>
+                    <input class="form-control" id="name" name="name" value="{{ teacher.name }}"required>
+                </div>
+        
+                <div class="mb-3 col-sm-11 col-md-6">
+                    <label for="subjects" class="form-label">Subjects</label>
+                    <input class="form-control" id="subjects" name="subjects" value="{{ teacher.subjects }}" required>
+                </div>
+            </div>
+        
+            <div class="mb-3">
+                <label for="years_at_smic_hset" class="form-label">Years At SMIC HSET</label>
+                <input type="number" class="form-control" id="years_at_smic_hset" name="years_at_smic_hset" value="{{ teacher.years_at_smic_hset }}" required>
+            </div>
+        
+            <div class="mb-3 form-check form-switch">
+                <input class="form-check-input" type="checkbox" name="is_full_time" id="is_full_time" {% if teacher.is_full_time %} checked {% endif %}>
+                <label class="form-check-label" for="is_full_time">Full Time?</label>
+            </div>
+        
+            <div class="text-end my-4">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

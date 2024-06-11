@@ -1,0 +1,75 @@
+{% set current_page = "review_add" %}
+{% extends "layouts/app.html" %}
+
+{% block title %} Rate My Teacher | Review Teacher {% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="row justify-content-md-center">
+    <div class="col-sm-11 col-md-9 col-lg-7">
+
+        <h1>Review Teacher</h1>
+
+        {% if msg == "Error" %}
+        <div class="alert alert-danger" role="alert">
+            <div>
+              {{ msg }}
+            </div>
+          </div>
+        {% elif msg == "Success" %}
+        <div class="alert alert-success" role="alert">
+            <div>
+                {{ msg }}
+            </div>
+        </div>
+
+        {% endif %}
+
+        <form class="mt-5" action="/teachers/{{teacher.id}}/new_review" method="post">
+
+            <div class="mb-3">
+                <label for="rating" class="form-label">On a Scale of 1-5 with 5 being best most: How would you rate your experience with this teacher?</label>
+                <input type="range" class="form-range" min="0" max="5" step="0.5" id="rating" name="rating">
+            </div>
+
+            <div class="row">
+                <div class="mb-3 col-sm-11 col-md-6">
+                    <label for="title" class="form-label">Title</label>
+                    <input class="form-control" id="title" name="title" required>
+                </div>
+        
+                <div class="mb-3 col-sm-11 col-md-6">
+                    <label for="body" class="form-label">Body</label>
+                    <input class="form-control" id="body" name="body" required>
+                </div>
+            </div>
+        
+            <div class="mb-3">
+                    <label for="amount-of-self-study" class="form-label">On a Scale of 1-5 with 5 being the most: How much self study is required in this teacher's course(s)?</label>
+                    <input type="range" class="form-range" min="0" max="5" step="0.5" id="amount-of-self-study" name="amount_of_self_study">
+            </div>
+            <div class="mb-3">
+                    <label for="amount-of-study-guide" class="form-label">On a Scale of 1-5 with 5 being super helpful: How helpful are this teacher's study guides (0 if none provided)?</label>
+                    <input type="range" class="form-range" min="0" max="5" step="0.5" id="amount-of-study-guide" name="amount_of_study_guide">
+            </div>
+            <div class="mb-3">
+                    <label for="late-work-strictness" class="form-label">On a Scale of 1-5 with 5 being the most strict: How strict is this teacher's late submission policy?</label>
+                    <input type="range" class="form-range" min="0" max="5" step="0.5" id="late-work-strictness" name="late_work_strictness">
+            </div>
+            <div class="mb-3">
+                    <label for="time-to-grade" class="form-label">On a Scale of 1-5 with 5 being the longest: How long does it take for this teacher to put out grades?</label>
+                    <input type="range" class="form-range" min="0" max="5" step="0.5" id="time-to-grade" name="time_to_grade">
+            </div>
+        
+            <div class="text-end my-4">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
