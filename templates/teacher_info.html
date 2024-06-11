@@ -139,8 +139,15 @@
                     <a href="#" class="card-link">Edit</a>
                     <a href="#" class="card-link">Delete</a>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Overall Teacher Rating: {{ review.rating }}</li>
+                    <ul class="list-group list-group-flush rating-icons">
+                        <li class="list-group-item">
+                            <div>
+                                <span class="material-symbols-outlined">
+                                    auto_stories
+                                </span>
+                                 {{ review.rating }}
+                            </div>
+                        </li>
                         <li class="list-group-item">Amount of Self Study (5 being the most): {{ review.amount_of_self_study }}</li>
                         <li class="list-group-item">Amount of Study Guides provided (5 being the most): {{ review.amount_of_study_guide }}</li>
                         <li class="list-group-item">Late Work Strictness (5 being the most strict): {{ review.late_work_strictness }}</li>
