@@ -4,6 +4,23 @@ img-parent {
     margin: 0 auto
 }
 
+.rating-number {
+    font-size: 30px;
+}
+
 .rating-icons {
     font-size: 48px;
+    vertical-align: bottom;
+}
+
+.color-bad {
+    color: red;
+}
+
+.color-mid {
+    color: orange;
+}
+
+.color-good {
+    color: green;
 }
