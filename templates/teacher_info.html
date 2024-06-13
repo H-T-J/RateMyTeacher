@@ -47,10 +47,10 @@
                 <div class="row justify-content-md-center">
                     <label for="rating" class="form-label">On a Scale of 1-5 with 5 being best most: How would you rate your experience with this teacher?</label>
                     <div class="col-sm-2 col-md-2">
-                        <span>4.5</span>
+                        <span id="rating-string">2.5</span>
                     </div>
                     <div class="col-sm-10 col-md-6">
-                        <input type="range" class="form-range" min="0" max="5" step="0.5" id="rating" name="rating">
+                        <input type="range" class="form-range" min="0" max="5" step="0.5" id="rating" name="rating" oninput="updateString('rating', 'rating-string')">
                     </div>
                 </div>
     
@@ -70,10 +70,10 @@
                         <label for="amount-of-self-study" class="form-label">On a Scale of 1-5 with 5 being the most: How much self study is required in this teacher's course(s)?</label>
                         <div class="row justify-content-md-center">
                             <div class="col-sm-2 col-md-2">
-                                <span>4.5</span>
+                                <span id="amount-of-self-study-string">2.5</span>
                             </div>
                             <div class="col-sm-10 col-md-6">
-                                <input type="range" class="form-range" min="0" max="5" step="0.5" id="amount-of-self-study" name="amount_of_self_study">
+                                <input type="range" class="form-range" min="0" max="5" step="0.5" id="amount-of-self-study" name="amount_of_self_study" oninput="updateString('amount-of-self-study', 'amount-of-self-study-string')">
                             </div>
                         </div>
                 </div>
@@ -81,10 +81,10 @@
                         <label for="amount-of-study-guide" class="form-label">On a Scale of 1-5 with 5 being super helpful: How helpful are this teacher's study guides? (0 if none provided)</label>
                         <div class="row justify-content-md-center">
                             <div class="col-sm-2 col-md-2">
-                                <span>4.5</span>
+                                <span id="amount-of-study-guide-string">2.5</span>
                             </div>
                             <div class="col-sm-10 col-md-6">
-                                <input type="range" class="form-range" min="0" max="5" step="0.5" id="amount-of-study-guide" name="amount_of_study_guide">
+                                <input type="range" class="form-range" min="0" max="5" step="0.5" id="amount-of-study-guide" name="amount_of_study_guide" oninput="updateString('amount-of-study-guide', 'amount-of-study-guide-string')">
                             </div>
                         </div>
                 </div>
@@ -92,10 +92,10 @@
                         <label for="late-work-strictness" class="form-label">On a Scale of 1-5 with 5 being the most strict: How strict is this teacher's late submission policy?</label>
                         <div class="row justify-content-md-center">
                             <div class="col-sm-2 col-md-2">
-                                <span>4.5</span>
+                                <span id="late-work-strictness-string">2.5</span>
                             </div>
                             <div class="col-sm-10 col-md-6">
-                                <input type="range" class="form-range" min="0" max="5" step="0.5" id="late-work-strictness" name="late_work_strictness">
+                                <input type="range" class="form-range" min="0" max="5" step="0.5" id="late-work-strictness" name="late_work_strictness" oninput="updateString('late-work-strictness', 'late-work-strictness-string')">
                             </div>
                         </div>
                 </div>
@@ -103,10 +103,10 @@
                         <label for="time-to-grade" class="form-label">On a Scale of 1-5 with 5 being the longest: How long does it take for this teacher to put out grades?</label>
                         <div class="row justify-content-md-center">
                             <div class="col-sm-2 col-md-2">
-                                <span>4.5</span>
+                                <span id="time-to-grade-string">2.5</span>
                             </div>
                             <div class="col-sm-10 col-md-6">
-                                <input type="range" class="form-range" min="0" max="5" step="0.5" id="time-to-grade" name="time_to_grade">
+                                <input type="range" class="form-range" min="0" max="5" step="0.5" id="time-to-grade" name="time_to_grade" oninput="updateString('time-to-grade', 'time-to-grade-string')">
                             </div>
                         </div>
                 </div>
