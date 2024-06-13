@@ -117,12 +117,8 @@
             </form>
         </div>
     </div>
-
-
-
-
-
 </div>
+
 <div class="bg-dark text-white py-5">
 
     <div class="container">
@@ -139,19 +135,109 @@
                     <a href="#" class="card-link">Edit</a>
                     <a href="#" class="card-link">Delete</a>
                     </div>
-                    <ul class="list-group list-group-flush rating-icons">
+                    <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <div>
-                                <span class="material-symbols-outlined">
-                                    auto_stories
+                            <div class="
+                                {% if review.rating >= 4 %}
+                                color-good
+                                {% elif review.rating >= 2.5 %}
+                                color-mid
+                                {% elif review.rating < 2.5 %}
+                                color-bad
+                                {% endif %}
+                                "
+                                
+                                >
+
+                                <span data-toggle="tooltip" data-placement="top" title="This is a rating on the teacher as a whole and how helpful they are in your learning journey with 5 being the best rating.">
+                                    <span class="material-symbols-outlined rating-icons">
+                                        kid_star
+                                    </span>
                                 </span>
-                                 {{ review.rating }}
+                                 <span class="rating-number">
+                                    {{ review.rating }}
+                                 </span>
                             </div>
+                            <div class="
+                                {% if review.amount_of_self_study >= 4 %}
+                                color-bad
+                                {% elif review.amount_of_self_study >= 2.5 %}
+                                color-mid
+                                {% elif review.amount_of_self_study < 2.5 %}
+                                color-good
+                                {% endif %}
+                                "
+                                >
+                                <span data-toggle="tooltip" data-placement="top" title="This is a rating based on how much self study is required to succeed in this teacher's classes with 5 being the most required.">
+                                    <span class="material-symbols-outlined rating-icons">
+                                        auto_stories
+                                    </span>
+                                </span>
+                                 <span class="rating-number">
+                                    {{ review.amount_of_self_study }}
+                                 </span>
+                            </div>
+                            <div class="
+                                {% if review.amount_of_study_guide >= 4 %}
+                                color-good
+                                {% elif review.amount_of_study_guide >= 2.5 %}
+                                color-mid
+                                {% elif review.amount_of_study_guide < 2.5 %}
+                                color-bad
+                                {% endif %}
+                                "
+                                >
+                                <span data-toggle="tooltip" data-placement="top" title="This is a rating based on the amount of study guides provided by this teacher for the students to prepare for tests with 5 being the most.">
+                                    <span class="material-symbols-outlined rating-icons">
+                                        sticky_note_2
+                                    </span>
+                                </span>
+
+                                 <span class="rating-number">
+                                    {{ review.amount_of_study_guide }}
+                                 </span>
+                            </div>
+                            <div class="
+                                {% if review.late_work_strictness >= 4 %}
+                                color-bad
+                                {% elif review.late_work_strictness >= 2.5 %}
+                                color-mid
+                                {% elif review.late_work_strictness < 2.5 %}
+                                color-good
+                                {% endif %}
+                                "
+                                >
+                                <span data-toggle="tooltip" data-placement="top" title="This is a rating based on how strict the teacher is about the submission of late work with 5 being the most strict.">
+                                    <span class="material-symbols-outlined rating-icons">
+                                        alarm_off
+                                    </span>
+                                </span>
+
+                                 <span class="rating-number">
+                                    {{ review.late_work_strictness }}
+                                 </span>
+                            </div>
+                            <div class="
+                                {% if review.time_to_grade >= 4 %}
+                                color-bad
+                                {% elif review.time_to_grade >= 2.5 %}
+                                color-mid
+                                {% elif review.time_to_grade < 2.5 %}
+                                color-good
+                                {% endif %}
+                                "
+                                >
+                                <span data-toggle="tooltip" data-placement="top" title="This is a rating based on how long it takes for the specified teacher to grade assignments with 5 being the longest.">
+                                    <span class="material-symbols-outlined rating-icons">
+                                        schedule
+                                    </span>
+                                </span>
+                                 <span class="rating-number">
+                                    {{ review.time_to_grade }}
+                                 </span>
+                            </div>
+                           
                         </li>
-                        <li class="list-group-item">Amount of Self Study (5 being the most): {{ review.amount_of_self_study }}</li>
-                        <li class="list-group-item">Amount of Study Guides provided (5 being the most): {{ review.amount_of_study_guide }}</li>
-                        <li class="list-group-item">Late Work Strictness (5 being the most strict): {{ review.late_work_strictness }}</li>
-                        <li class="list-group-item">Time Taken to Grade Assignments (5 being the longest): {{ review.time_to_grade }}</li>
                     </ul>
                 </div>
             </div>    
@@ -180,8 +266,5 @@
       </div>
     </div>
   </div>
-   
-
-
 
 {% endblock %}
