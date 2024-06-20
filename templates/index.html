@@ -8,7 +8,7 @@
     <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
       <div class="card">
         {% if teacher.image_link %}
-        <img src="{{ teacher.image_link }}" class="card-img-top" alt="" height="249">
+        <img src="{{ teacher.image_link }}" class="card-img-top" alt="" height="452" width="411">
         {% else %}
         <img src="https://www.pngkey.com/png/detail/21-213224_unknown-person-icon-png-download.png" class="card-img-top" alt="Default Teacher Image">
         {% endif %}
@@ -17,6 +17,9 @@
           <p class="card-text">{{ teacher.subjects }}</p>
           <a href="/teachers/{{ teacher.id }}" class="btn btn-primary">Read More</a>
         </div>
+        <div class="card-footer text-center">
+          <small class="text-body-secondary">{{ teacher.no_of_reviews }} Reviews</small>
+        </div>    
       </div>
     </div>
     {% endfor %}

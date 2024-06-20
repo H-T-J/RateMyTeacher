@@ -47,15 +47,16 @@ async def add_teacher(request: Request):
 
     await form.create_form_data()
 
-    new_blog = Teachers(
+    new_teacher = Teachers(
         name=form.form_data["name"],
         subjects=form.form_data["subjects"],
         years_at_smic_hset=form.form_data["years_at_smic_hset"],
-        is_full_time=form.form_data["is_full_time"]
+        is_full_time=form.form_data["is_full_time"],
+        image_link=form.form_data["image_link"]
     )
 
     try:
-        await new_blog.insert()
+        await new_teacher.insert()
         return templates.TemplateResponse("teacher_add.html",
             {
                 "request": request,
@@ -94,6 +95,7 @@ async def new_review(request: Request, teacher_id: str):
         )
 
         teacher.reviews_list.append(review)
+        teacher.no_of_reviews = len(teacher.reviews_list)
 
         print("Everything was updated")
 

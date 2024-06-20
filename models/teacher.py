@@ -2,7 +2,7 @@ from fastapi import Request
 from pydantic import BaseModel
 from beanie import Document, Indexed
 
-from typing import List
+from typing import List, Optional
 
 
 class Review(BaseModel):
@@ -37,6 +37,7 @@ class Teachers(Document):
     is_full_time: bool
     no_of_reviews: int = 0
     reviews_list: List[Review] = []
+    image_link: Optional[str]
 
     class Settings:
         name = "teachers"
